@@ -1,5 +1,5 @@
 <template>
-    <div class="body">
+    <div class="wrapper">
         <div class="main-container">
 
             <div class="container-one">
@@ -95,7 +95,11 @@ export default {
 </script>
 
 <style scoped>
+    .wrapper{
+        display: flex;
+        justify-content: center;
 
+    }
 
     img{
         height: 30px;
@@ -109,8 +113,9 @@ export default {
         background-color:rgb(255, 255, 255);
         border-width: 10px;
         border-radius: 50px;
-        width: 100%;
+        width: 60%;
         text-decoration: none;
+        
         
     }
     .container-one{
@@ -160,7 +165,8 @@ export default {
         
     }
     .projects-button{
-        background-color: lightgray;
+        background-color: white;
+        box-shadow: rgba(0,0,0,0.21) 0px 3px 8px;
         padding: 10px;
         margin: 5px;
         border-radius: 15px;
