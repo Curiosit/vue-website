@@ -115,6 +115,7 @@ export default {
         border-radius: 50px;
         width: 60%;
         text-decoration: none;
+        box-shadow: rgba(0,0,0,0.21) 0px 3px 8px;
         
         
     }
@@ -184,6 +185,12 @@ export default {
         height: 2rem;
     }
 
+    @media only screen and (max width: 950px) {
+            .main-container {
+                width: 95%;
+            }
+
+    }
 
 
 </style>
