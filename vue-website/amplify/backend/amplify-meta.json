@@ -1,0 +1,55 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-vuewebsite-dev-140519-authRole",
+      "UnauthRoleArn": "arn:aws:iam::319031883628:role/amplify-vuewebsite-dev-140519-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::319031883628:role/amplify-vuewebsite-dev-140519-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-vuewebsite-dev-140519-deployment",
+      "UnauthRoleName": "amplify-vuewebsite-dev-140519-unauthRole",
+      "StackName": "amplify-vuewebsite-dev-140519",
+      "StackId": "arn:aws:cloudformation:us-west-2:319031883628:stack/amplify-vuewebsite-dev-140519/61048f30-c00d-11ed-8c73-0a59549dad27",
+      "AmplifyAppId": "d2pkip1pecv0y1"
+    }
+  },
+  "auth": {
+    "vuewebsite4ce15a4e": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "output": {
+        "UserPoolId": "us-west-2_2vBB462U9",
+        "AppClientIDWeb": "43mct8fp53f4ua353fnhlul96m",
+        "AppClientID": "1ikdhgosb0gi7viiqkp3condei",
+        "IdentityPoolId": "us-west-2:9419bbf3-3192-40a7-94f6-589364c8028e",
+        "UserPoolArn": "arn:aws:cognito-idp:us-west-2:319031883628:userpool/us-west-2_2vBB462U9",
+        "IdentityPoolName": "vuewebsite4ce15a4e_identitypool_4ce15a4e__dev",
+        "UserPoolName": "vuewebsite4ce15a4e_userpool_4ce15a4e"
+      },
+      "lastPushTimeStamp": "2023-03-11T14:46:32.400Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-vuewebsite-dev-140519-deployment/amplify-cfn-templates/auth/vuewebsite4ce15a4e-cloudformation-template.json",
+        "logicalId": "authvuewebsite4ce15a4e"
+      }
+    }
+  }
+}

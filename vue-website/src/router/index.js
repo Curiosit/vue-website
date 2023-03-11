@@ -3,6 +3,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import PostProject from '../components/PostProject.vue'
 import MainCard from '../components/MainCard.vue'
 import Projects from '../components/ProjectsCard.vue'
+import AuthCard from '../components/AuthCard.vue'
+
+
 const routes = [
   {
     path: '/home',
@@ -29,7 +32,13 @@ const routes = [
     path: '/post',
     name: 'Post',
     component: PostProject
+  },
+  {
+    path: '/authcard',
+    name: 'AuthCard',
+    component: AuthCard
   }
+
 ]
 
 const router = createRouter({

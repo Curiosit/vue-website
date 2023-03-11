@@ -37,7 +37,7 @@ async function getProjects(){
         const data = await dynamodb.scan(params).promise();
         return responseReturn(200, data);
     }catch(err){
-        return responseReturn(500, err);
+        return responseReturn(500, err.response.data);
     }
 }
 
@@ -55,7 +55,7 @@ async function postProjects(requestBody){
         }
         return responseReturn(200, body)
     }, (err) =>{
-        return err;
+        return responseReturn(500, err.response.data);
     })
 }
 
@@ -66,7 +66,7 @@ function responseReturn(statusCode, body){
         statusCode: statusCode,
         headers: {
             "Access-Control-Allow-Headers" : "Content-Type",
-            "Access-Control-Allow-Origin" : "",
+            "Access-Control-Allow-Origin" : "*",
             "Access-Control-Allow-Methods" : "OPTIONS, POST, GET",
             'Content-Type' : 'application/json'
         },

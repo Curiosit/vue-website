@@ -4,7 +4,7 @@
        <div class="container">
             <div class="input-container">
                 <label for="id">Project ID</label>
-                <input type="text" name="Id" v-model="postData.projectId">
+                <input type="text" name="Id" v-model="postData.projectid">
             </div>
             <div class="input-container">
                 <label for="id">Title</label>
@@ -41,7 +41,7 @@ export default {
     data(){
         return{
             postData: {
-                projectId: '',
+                projectid: '',
                 title: '',
                 about: '',
                 image: '',
