@@ -1,30 +1,55 @@
 <template>
     
 
+    
 <div class="main-container">
-    <div class="projects-card" v-for="(items, index) in projectData.ProjectsArray" v-bind:key="items">
-    <h2>{{projectData.ProjectsArray[index].Title}}</h2>
-    <img :src="projectData.ProjectsArray[index].Image" alt="">
-    <p>{{projectData.ProjectsArray[index].About}}</p>
-    <div class="links">
-        <a :href="projectData.ProjectsArray[index].Link1" target="_blank"><img src="../assets/github.png" alt=""></a>
-        <a :href="projectData.ProjectsArray[index].Link2" target="_blank"><img src="../assets/link.png" alt=""></a>
+    <div class="projects-card" v-for="(items, index) in lambdaReturnData.Items" v-bind:key="items">
+        <h2>{{lambdaReturnData.Items[index].title}}</h2>
+        <img :src="lambdaReturnData.Items[index].image" alt="">
+        <p>{{lambdaReturnData.Items[index].about}}</p>
+        <div class="links">
+            <a :href="lambdaReturnData.Items[index].link1" target="_blank"><img src="../assets/github.png" alt=""></a>
+            <a :href="lambdaReturnData.Items[index].link2" target="_blank"><img src="../assets/link.png" alt=""></a>
+
+        </div>
+        
 
     </div>
-    
 
 </div>
 
-</div>
+
+
+
+
+
 </template>
 
 <script>
+import axios from 'axios'
+
+
 import jsonData from "/projects.json"
 export default {
     data(){
         return{
-            projectData: jsonData
+            projectData: jsonData,
+            lambdaReturnData: {}
         }
+    },
+    methods:{
+        GetProjects(){
+            axios.get('https://q7a2hdiu85.execute-api.us-west-2.amazonaws.com/production/getprojects').then(response => {
+                console.log(response);
+                this.lambdaReturnData = response.data;
+            }).catch(err=>{
+                console.log(err);
+            })
+
+        }
+    },
+    mounted(){
+        this.GetProjects();
     }
 }
 </script>
