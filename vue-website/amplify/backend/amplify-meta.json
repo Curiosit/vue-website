@@ -45,7 +45,7 @@
         "IdentityPoolName": "vuewebsite4ce15a4e_identitypool_4ce15a4e__dev",
         "UserPoolName": "vuewebsite4ce15a4e_userpool_4ce15a4e"
       },
-      "lastPushTimeStamp": "2023-03-11T14:46:32.400Z",
+      "lastPushTimeStamp": "2023-03-11T17:19:47.024Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-vuewebsite-dev-140519-deployment/amplify-cfn-templates/auth/vuewebsite4ce15a4e-cloudformation-template.json",
         "logicalId": "authvuewebsite4ce15a4e"
