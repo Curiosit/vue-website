@@ -1,7 +1,9 @@
 <template>
-    <div>
-       <h1>Post project</h1>
-       <div class="container">
+    <div class="wrapper">
+    <div class="post-container">
+       
+       <div class="container-post">
+        <h1>Post project</h1>
             <div class="input-container">
                 <label for="id">Project ID</label>
                 <input type="text" name="Id" v-model="postData.projectid">
@@ -31,19 +33,29 @@
        </div>
   
     </div>
+</div>
 
 </template>
 
 <script>
 import axios from 'axios';
-const headers = {
-  headers: {
-    // 'application/json' is the modern content-type for JSON, but some
-    // older servers may use 'text/json'.
-    // See: http://bit.ly/text-json
-    "Authorization" : "eyJraWQiOiJZT0FCQ1o5Y2NlbWN4amlqWWZJV2VpSHp0WTBZT1NMcUprUHgxT25uRWRFPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJmZTMzZTYxMS0xMDE4LTRkYTYtYjdhYy1hNzcyMzNhZTMzMDIiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLXdlc3QtMi5hbWF6b25hd3MuY29tXC91cy13ZXN0LTJfMnZCQjQ2MlU5IiwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwiY29nbml0bzp1c2VybmFtZSI6ImFkbWluIiwib3JpZ2luX2p0aSI6IjE2ZDlhNzNhLWY4ZTMtNDdiNi04NjVhLWIzMWVjYTljNjAwMSIsImF1ZCI6IjQzbWN0OGZwNTNmNHVhMzUzZm5obHVsOTZtIiwiZXZlbnRfaWQiOiIyOGU5OWIzOC0yODc5LTQ1YmEtYmVhMi04YjJjZTg2NjQyZjEiLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTY3ODYxMDczMSwicGhvbmVfbnVtYmVyIjoiKzQ4Njk1NTc3NDMzIiwiZXhwIjoxNjc4NjE0MzMxLCJpYXQiOjE2Nzg2MTA3MzEsImp0aSI6IjQ5NWQxMTZhLWU2NGEtNDEyZC04ZThlLTdjOWRiZTYyYjNlYyIsImVtYWlsIjoibWFpbGluZ2JvdEBnbWFpbC5jb20ifQ.jsddo73elMjeprvIppyZqeh49i2WLXyyeff2hG7YUkOKDMDPbXE7oX3_T2hzwU3Nq04CZyBkHoyzpt0wTAjx_wtnRjBRRcOkdfN4RQERbXbAJSVSbCoxsYqp05CwK879l5ZNunPrD3Ov0Lkp3n7js3zLBf0cXrIFu7Z_vXicV7AAf2f0nXfvR2TEHZjawQHEtBuahSyQxjEO8VrsaKmoXvsi-PS335FNBc8SfCPKTzVRDQtADu16Os16e0m_yZBbAVJuuI0OzlqPUbT0LYyMc5hVh4lTH9iH_x1rvHTxxHaXKS2uYaR8kUyC_sUUU0kOI3W6390QDhbrV8UF67LW6w"
-  }
-};
+
+var headers ="";
+
+import { Auth } from 'aws-amplify';
+Auth.currentSession()
+  .then((data) => {
+    const id = data.getIdToken().getJwtToken();
+    console.log(data.getIdToken());
+    console.log(id)
+    headers = {
+            headers: {
+                "Authorization" : id
+            }
+    }
+    console.log(headers)
+  })
+  .catch((err) => console.log(err));
 
 export default {
     data(){
@@ -62,9 +74,11 @@ export default {
     methods:{
         PostProject(){
             axios.post('https://q7a2hdiu85.execute-api.us-west-2.amazonaws.com/production/postprojects', this.postData, headers).then(response => {
+                
+                console.log(headers);
                 console.log(response);
-
             }).catch(err => {
+                console.log(headers);
                 console.log(err);
             })
         }
@@ -73,6 +87,31 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+    .wrapper{
+        display: flex;
+        justify-content: center;
+
+    }
+    .post-container{
+        display: flex;
+        flex-direction: row;
+        background-color:rgb(255, 255, 255);
+        border-width: 10px;
+        border-radius: 50px;
+        width: 60%;
+        text-decoration: none;
+        box-shadow: rgba(0,0,0,0.21) 0px 3px 8px;
+        
+        
+    }
+
+    .container-post{
+        
+        padding: 5%;
+        margin: 2%;
+        border-radius: 25px;
+        width: 30%;
+    }
 
 </style>
