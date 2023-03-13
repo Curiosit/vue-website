@@ -1,11 +1,12 @@
 <template>
-    <div><h1>Auth</h1></div>
+    <div>
     <amplify-authenticator>
-                <div>
-                My App
+                
+               
                 <amplify-sign-out></amplify-sign-out>
-                </div>
+       
         </amplify-authenticator>
+</div>
 </template>
 
 <script>
