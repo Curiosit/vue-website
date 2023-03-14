@@ -1,27 +1,24 @@
 <template>
   <nav>
-
   </nav>
-
-  <router-view/>
   <MainCard/>
-  <ProjectsCard/>
+  <router-view/>
 
   
 
 </template>
 <script>
 import MainCard from './components/MainCard.vue'
-import ProjectsCard from './components/ProjectsCard.vue'
+
 
 
 import { onAuthUIStateChange } from '@aws-amplify/ui-components';
 
 export default {
-  name: 'App',
+  name: 'Mateusz Płoszaj-Mazurek',
   components: {
     MainCard,
-    ProjectsCard
+    
   },
   created() {
     this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
@@ -63,6 +60,12 @@ nav {
 nav a {
   font-weight: bold;
   color: #2c3e50;
+}
+body {
+  background-color: #ffffff;
+        
+        background-size: 10px 10px;
+        background-image: repeating-linear-gradient(45deg, #c9c9c9 0, #c9c9c9 1px, #ffffff 0, #ffffff 50%);
 }
 
 nav a.router-link-exact-active {

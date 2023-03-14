@@ -75,14 +75,13 @@ import { Auth } from 'aws-amplify';
 Auth.currentSession()
   .then((data) => {
     const id = data.getIdToken().getJwtToken();
-    console.log(data.getIdToken());
-    console.log(id)
+    
     headers = {
             headers: {
                 "Authorization" : id
             }
     }
-    console.log(headers)
+    
   })
   .catch((err) => console.log(err));
 
@@ -103,10 +102,9 @@ export default {
         PostProject(){
             axios.post('https://q7a2hdiu85.execute-api.us-west-2.amazonaws.com/production/postprojects', this.postData, headers).then(response => {
                 
-                console.log(headers);
-                console.log(response);
+                console.log(response)
             }).catch(err => {
-                console.log(headers);
+                
                 console.log(err);
             })
         }

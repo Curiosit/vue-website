@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import ProjectsCard from '../components/ProjectsCard.vue'
 import PostProject from '../components/PostProject.vue'
 import MainCard from '../components/MainCard.vue'
 //import Projects from '../components/ProjectsCard.vue'
@@ -9,20 +9,26 @@ import {Auth} from 'aws-amplify';
 const routes = [
   {
     path: '/home',
-    name: 'Home',
+    name: 'Mateusz Płoszaj-Mazurek',
     Component: MainCard
 
 
   },
   {
+    path: '/projects',
+    name: 'Mateusz Płoszaj-Mazurek / Projects',
+    component: ProjectsCard
+
+  },
+  {
     path: '/post',
-    name: 'Post',
+    name: 'Mateusz Płoszaj-Mazurek / Post',
     component: PostProject,
     meta: {auth: true}
   },
   {
     path: '/auth',
-    name: 'Auth',
+    name: 'Mateusz Płoszaj-Mazurek / Auth',
     component: AuthCard
   }
 
@@ -32,6 +38,12 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  document.title = to.name;
+  next();
+});
+
 
 router.beforeResolve((to,from,next)=>{
   if(to.meta.auth){
