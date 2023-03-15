@@ -75,7 +75,7 @@ import { Auth } from 'aws-amplify';
 Auth.currentSession()
   .then((data) => {
     const id = data.getIdToken().getJwtToken();
-    
+    //console.log(id);
     headers = {
             headers: {
                 "Authorization" : id

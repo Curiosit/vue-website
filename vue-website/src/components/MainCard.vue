@@ -105,7 +105,7 @@
                 
                 <div class="button-container">
                     <div class="projects-button">
-                        <a href="/projects">My Projects</a>
+                        <a href="/projects/all">My Projects</a>
                     </div>
                     
                 </div>

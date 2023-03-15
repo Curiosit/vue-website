@@ -8,18 +8,18 @@ import {Auth} from 'aws-amplify';
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'Mateusz Płoszaj-Mazurek',
     Component: MainCard
-
-
   },
   {
-    path: '/projects',
+    path: '/projects/:q',
     name: 'Mateusz Płoszaj-Mazurek / Projects',
-    component: ProjectsCard
+    component: ProjectsCard,
+    props: true,
 
   },
+  
   {
     path: '/post',
     name: 'Mateusz Płoszaj-Mazurek / Post',
@@ -30,7 +30,8 @@ const routes = [
     path: '/auth',
     name: 'Mateusz Płoszaj-Mazurek / Auth',
     component: AuthCard
-  }
+  },
+
 
 ]
 

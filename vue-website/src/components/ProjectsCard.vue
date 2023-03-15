@@ -1,33 +1,33 @@
 <template>
     
     <div class="button-container">
-                    <div class="projects-button">
-                        <a href="">All</a>
+                    <div :class="this.selector === '' ? 'projects-button-selected' : 'projects-button'">
+                        <a href="./all">All</a>
                     </div>
-                    <div class="projects-button">
-                        <a href="">AEC</a>
+                    <div :class="this.selector === 'aec' ? 'projects-button-selected' : 'projects-button'">
+                        <a href="./AEC">AEC</a>
                     </div>
-                    <div class="projects-button">
-                        <a href="">IT</a>
+                    <div :class="this.selector === 'it' ? 'projects-button-selected' : 'projects-button'">
+                        <a href="./IT">IT</a>
                     </div>
-                    <div class="projects-button">
-                        <a href="">Research</a>
+                    <div :class="this.selector === 'res' ? 'projects-button-selected' : 'projects-button'">
+                        <a href="./RES">Research</a>
                     </div>
-                    <div class="projects-button">
-                        <a href="">Press</a>
+                    <div :class="this.selector === 'press' ? 'projects-button-selected' : 'projects-button'">
+                        <a href="./PRESS">Press</a>
                     </div>
                     
                 </div>
 
-    
+
 <div class="main-container">
-    <div class="projects-card" v-for="(items, index) in lambdaReturnData.Items" v-bind:key="items">
-        <h2>{{lambdaReturnData.Items[index].title}}</h2>
-        <img :src="lambdaReturnData.Items[index].image" alt="">
-        <p>{{lambdaReturnData.Items[index].about}}</p>
+    <div class="projects-card" v-for="(items, index) in query" v-bind:key="items">
+        <h2>{{query[index].title}}</h2>
+        <img :src="query[index].image" alt="">
+        <p>{{query[index].about}}</p>
         <div class="links">
-            <a :href="lambdaReturnData.Items[index].link1" target="_blank"><img src="../assets/github.png" alt=""></a>
-            <a :href="lambdaReturnData.Items[index].link2" target="_blank"><img src="../assets/link.png" alt=""></a>
+            
+            <a :href="query[index].link2" target="_blank"><img src="../assets/link.png" alt=""></a>
 
         </div>
         
@@ -35,6 +35,9 @@
     </div>
 
 </div>
+
+    
+
 
 
 
@@ -47,29 +50,50 @@
 import axios from 'axios'
 
 
-import jsonData from "/projects.json"
+
+
 export default {
     data(){
         return{
-            projectData: jsonData,
-            lambdaReturnData: {}
+            lambdaReturnData: {},
+            query: '',
+            
         }
     },
+    props: ['q'],
     methods:{
         GetProjects(){
             axios.get('https://q7a2hdiu85.execute-api.us-west-2.amazonaws.com/production/getprojects').then(response => {
                 
                 this.lambdaReturnData = response.data;
+                
+                this.selector = "";
+                if (this.q == "all") {
+                        this.selector = "";
+                        
+                }
+                else {
+                        this.selector = this.q.toLowerCase();
+                }
+                this.query = this.lambdaReturnData.Items.filter(x => x.tag.toLowerCase().includes(this.selector));
+                
+                console.log(this.selector);
+                
+                
+                //console.log(this.q);
+                
             }).catch(err=>{
                 console.log(err);
             })
-
+            return this.query;
         }
     },
     mounted(){
         this.GetProjects();
     }
+    
 }
+
 </script>
 
 <style scoped>
@@ -117,7 +141,7 @@ export default {
 
     .projects-card{
         margin:10px;
-        flex-wrap: 0 0 40%;
+        flex-wrap: 0 0 30%;
         background-color: white;
         border-radius: 25px;
         padding:25px;
@@ -127,7 +151,7 @@ export default {
     }
 
     .projects-card img{
-        height: 20rem;  
+        height: 15rem;  
         border-radius: 15px;
 
     }
@@ -143,5 +167,26 @@ export default {
         height: 2rem;
         padding: 5px;
         margin: 5px;
+    }
+
+
+    .projects-button-selected {
+        background-color: rgb(52, 52, 52);
+        box-shadow: rgba(0,0,0,0.21) 0px 3px 8px;
+        padding: 10px;
+        margin: 5px;
+        border-radius: 15px;
+
+    }
+    .projects-button-selected a{
+        color:#ffffff;
+        text-decoration: none;
+        
+        font-size: 15px;
+        
+    }
+    .projects-button-selected :hover {
+        color:#494949;
+
     }
 </style>

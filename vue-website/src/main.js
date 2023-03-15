@@ -15,14 +15,7 @@ applyPolyfills().then(() => {
     defineCustomElements(window);
 });
 
-import { Auth } from 'aws-amplify';
-Auth.currentSession()
-  .then((data) => {
-    const id = data.getIdToken().getJwtToken();
-    console.log(data.getIdToken());
-    console.log(id)
-  })
-  .catch((err) => console.log(err));
+
  
 
 
