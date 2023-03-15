@@ -164,17 +164,7 @@ export default {
         height: 10rem;
         border-radius: 50%;
     }
-    @media screen and (max-width: 900px) {
-            .main-container {
-                width: 95%;
-                
-            }
-            .profile img{
-                height: 7rem;
-                border-radius: 10%;
-            }
-
-    }
+    
 
     
 
@@ -309,7 +299,17 @@ export default {
     }
 
 
+    @media screen and (max-width: 900px) {
+            .main-container {
+                width: 95%;
+                
+            }
+            .profile img{
+                height: 7rem;
+                border-radius: 10%;
+            }
 
+    }
 
     
 </style>
