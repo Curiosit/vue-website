@@ -10,8 +10,8 @@
                     <div :class="this.selector === 'it' ? 'projects-button-selected' : 'projects-button'">
                         <a href="./IT">IT</a>
                     </div>
-                    <div :class="this.selector === 'res' ? 'projects-button-selected' : 'projects-button'">
-                        <a href="./RES">Research</a>
+                    <div :class="this.selector === 'rese' ? 'projects-button-selected' : 'projects-button'">
+                        <a href="./RESE">Research</a>
                     </div>
                     <div :class="this.selector === 'press' ? 'projects-button-selected' : 'projects-button'">
                         <a href="./PRESS">Press</a>
@@ -24,7 +24,7 @@
     <div class="projects-card" v-for="(items, index) in query" v-bind:key="items">
         <h2>{{query[index].title}}</h2>
         <img :src="query[index].image" alt="">
-        <p>{{query[index].about}}</p>
+        <p class="about">{{query[index].about}}</p>
         <div class="links">
             
             <a :href="query[index].link2" target="_blank"><img src="../assets/link.png" alt=""></a>
@@ -99,9 +99,11 @@ export default {
 <style scoped>
     .main-container{
         display: flex;
-        justify-content: center;
+        justify-content:center;
+        row-gap: 10px;
         align-items:center;
         flex-wrap: wrap;
+       
     }
     .button-container{
         margin-top: 0,3%;
@@ -141,19 +143,23 @@ export default {
 
     .projects-card{
         margin:10px;
-        flex-wrap: 0 0 30%;
+        flex-basis: 30%;
         background-color: white;
         border-radius: 25px;
         padding:25px;
         box-shadow: rgba(0,0,0,0.21) 0px 3px 8px;
-
-
+        width: 30%;
+        
     }
 
     .projects-card img{
         height: 15rem;  
         border-radius: 15px;
 
+    }
+
+    .about {
+        text-align: justify;
     }
 
     .links{
@@ -188,5 +194,43 @@ export default {
     .projects-button-selected :hover {
         color:#494949;
 
+    }
+    @media screen and (max-width: 1200px) {
+            
+            .projects-card img{
+            height: 12rem;  
+            border-radius: 15px;
+    
+        }
+            .links img{
+            height: 2rem;
+            padding: 5px;
+            margin: 5px;
+        }
+        .projects-card{
+        
+        flex-basis: 51%
+        
+        
+    }
+        }
+    @media screen and (max-width: 800px) {
+            
+        .projects-card img{
+        height: 10rem;  
+        border-radius: 15px;
+
+    }
+    .links img{
+            height: 2rem;
+            padding: 5px;
+            margin: 5px;
+        }
+        .projects-card{
+        
+        flex-basis: 80%
+        
+        
+    }
     }
 </style>

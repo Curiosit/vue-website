@@ -153,18 +153,6 @@ export default {
         
         
     }
-    @media only screen and (max width: 2000px) {
-            .main-container {
-                width: 95%;
-                
-            }
-            .profile img{
-                height: 2rem;
-                border-radius: 50%;
-            }
-
-    }
-
     .container-one{
         
         padding: 1%;
@@ -176,6 +164,19 @@ export default {
         height: 10rem;
         border-radius: 50%;
     }
+    @media screen and (max-width: 900px) {
+            .main-container {
+                width: 95%;
+                
+            }
+            .profile img{
+                height: 7rem;
+                border-radius: 10%;
+            }
+
+    }
+
+    
 
     .link a{
         text-decoration: none;
